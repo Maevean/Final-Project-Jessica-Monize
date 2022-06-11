@@ -147,7 +147,7 @@ class GalaxyRunnerRocket :public theRocketShips {
         cin >> o;
         if (o == "options")
         {//begin options and rules
-            cout << "Collect fuel for your rocket by rolling the dice." << endl;
+            cout << "Collect 50 bottles of fuel for your rocket by rolling the dice." << endl;
             cout << "Rocket CyberStar gives you a *2 to you roll." << endl;
             cout << "Rocket GalaxyRunner gives you an extra dice roll" << endl;
             cout << "Which will you choose?" << endl;
@@ -173,6 +173,7 @@ class GalaxyRunnerRocket :public theRocketShips {
                 theRocketShips* s1 = new CyberStarRocket();
                 s1->refueling();
                 cout << "Hop on before take off!" << endl;
+                this_thread::sleep_for(chrono::seconds(4));
             }
             //Second round CyberStar if less than 50
             else
@@ -184,18 +185,20 @@ class GalaxyRunnerRocket :public theRocketShips {
                 cout << "You gained " << dice1 << " bottles of fuel!" << endl;
                 cout << "\tYou totalled in " << dice+dice1 << endl;
                 // Third round If dice >=50
-                if (dice >= 50)
+                if (dice+dice1 >= 50)
                 {
                     cout << "\tYou made it! " << endl;
                     theRocketShips* s1 = new CyberStarRocket();
                     s1->refueling();
                     cout << "Hop on before take off!" << endl;
+                    this_thread::sleep_for(chrono::seconds(4));
                 }
                 //Third round, if dice lower than 50
                 else {
 
                     theRocketShips* s3 = new CyberStarRocket();
                     s3->TooLate();
+                    this_thread::sleep_for(chrono::seconds(4));
                 }
             }
         }
@@ -220,6 +223,7 @@ class GalaxyRunnerRocket :public theRocketShips {
                 theRocketShips* s2 = new GalaxyRunnerRocket();
                 s2->refueling();
                 cout << "Hop on before take off!" << endl;
+                this_thread::sleep_for(chrono::seconds(4));
             }
             //Second round GalaxyRunner if <=50
             else
@@ -237,11 +241,13 @@ class GalaxyRunnerRocket :public theRocketShips {
                     theRocketShips* s2 = new GalaxyRunnerRocket();
                     s2->refueling();
                     cout << "Hop on before take off!" << endl;
+                    this_thread::sleep_for(chrono::seconds(4));
                 }
                 //Third round, if dice lower than 50
                 else {
                     theRocketShips* s4 = new GalaxyRunnerRocket();
                     s4->TooLate();
+                    this_thread::sleep_for(chrono::seconds(4));
                 }
             }
         }
